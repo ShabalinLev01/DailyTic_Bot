@@ -15,7 +15,7 @@ namespace DailyTic_Bot.Controllers.Services
             {
                 new UtcState(),
                 new AddState(),
-                new OpenState()
+                new OpenState(),
             };
         }
 

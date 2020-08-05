@@ -17,7 +17,8 @@ namespace DailyTic_Bot.Controllers.Commands
         
         public override string Name { get; } = "Utc";
 
-        public override async Task Execute(Message message, ITelegramBotClient botClient, BotContext context, Update update, IBackgroundJobClient jobClient)
+        public override async Task Execute(Message message, ITelegramBotClient botClient, BotContext context,
+            Update update, IBackgroundJobClient jobClient, IStateService stateService)
         {
             db = context;
             var chatId = message.Chat.Id;
@@ -40,12 +41,14 @@ namespace DailyTic_Bot.Controllers.Commands
                 db.States.FirstOrDefault(x => x.ChatId == chatId).States = "Add";
                 db.UtcTimes.FirstOrDefault(x => x.ChatId == chatId).UtcZone = utcTime;
                 db.SaveChanges();
-                await botClient.SendTextMessageAsync(chatId, "Сейчас вы можете добавлять напоминания.",
+                await botClient.SendTextMessageAsync(chatId,
+                    "\U0001F64C вы можете добавлять напоминания.\U0001F64C\n Примеры добавления:\n " +
+                    "'Набрать маме через 10 минут'\n'Поздравить Анатолия с Днём рождения 26 января'\n'Успеть купить продукты завтра вечером' ",
                     parseMode: ParseMode.Html, false, false, 0, keyBoard);
             }
             else
             {
-                await botClient.SendTextMessageAsync(chatId, "Your UTC zone is uncorrect. Enter again");
+                await botClient.SendTextMessageAsync(chatId, "Ваша UTC зона некорректна, попробуйте снова");
             }
         }
     }

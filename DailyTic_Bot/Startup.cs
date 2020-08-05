@@ -1,5 +1,6 @@
 using System;
 using DailyTic_Bot.Controllers.Abstractions;
+using DailyTic_Bot.Controllers.JobsCommands;
 using DailyTic_Bot.Controllers.Services;
 using DailyTic_Bot.Models;
 using DevelopersGame.Web;
@@ -34,6 +35,7 @@ namespace DailyTic_Bot
                 .AddScoped<ICommandService, CommandService>()
                 .AddScoped<IStateService, StateService>()
                 .AddScoped<INotificationJob, NotificationJob>()
+                .AddScoped<ICreateSchedule, CreateSchedule>()
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
                 {

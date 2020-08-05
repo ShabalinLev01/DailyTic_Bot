@@ -6,7 +6,6 @@ namespace DailyTic_Bot.Models
     {
         public DbSet<UtcTime> UtcTimes { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<ReminderList> ReminderLists { get; set; }
         
         public BotContext(DbContextOptions<BotContext> options)
             : base(options)

@@ -10,7 +10,8 @@ namespace DailyTic_Bot.Controllers.Abstractions
     {
         public abstract string Name { get; }
 
-        public abstract Task Execute(Message message, ITelegramBotClient client, BotContext context, Update update, IBackgroundJobClient jobClient);
+        public abstract Task Execute(Message message, ITelegramBotClient client, BotContext context, Update update,
+            IBackgroundJobClient jobClient, IStateService stateService);
         
     }
 }

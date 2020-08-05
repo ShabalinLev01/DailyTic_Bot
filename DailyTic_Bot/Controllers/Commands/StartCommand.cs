@@ -66,7 +66,11 @@ namespace DailyTic_Bot.Controllers.Commands
                 db.States.FirstOrDefault(x => x.ChatId == chatId).States = "Add";
                 db.SaveChanges();
                 
-                await botClient.SendTextMessageAsync(chatId, "Now you can add your tasks and reminders",
+                await botClient.SendTextMessageAsync(chatId, "\U0001F64CСейчас вы можете добавлять напоминания.\U0001F64C\n" +
+                                                             "Примеры добавления:\n" +
+                                                             "\U00002705'Набрать маме через 10 минут'\U00002705\n" +
+                                                             "\U00002705'Поздравить Анатолия с Днём рождения 26 января'\U00002705\n" +
+                                                             "\U00002705'Успеть купить продукты завтра вечером'\U00002705",
                     parseMode: ParseMode.Html, false, false, 0, keyBoard);
             }
         }

@@ -78,7 +78,7 @@ namespace DailyTic_Bot.Controllers
                             _stateName = _db.States.FirstOrDefault(x => x.ChatId == chatId).States;
                             if (_stateName == state.Name)
                             {
-                                await state.Execute(message, _telegramBotClient, _db, update, _jobClient);
+                                await state.Execute(message, _telegramBotClient, _db, update, _jobClient, _stateService);
                                 break;
                             }
                         }
